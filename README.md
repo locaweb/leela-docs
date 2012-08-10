@@ -1,4 +1,0 @@
-leela-docs
-==========
-
-Leela documentation
