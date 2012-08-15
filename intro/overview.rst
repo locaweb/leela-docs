@@ -2,17 +2,30 @@
  Overview
 ==========
 
-Leela is an event processing, analysis and monitoring system:
+In short leela is an event processor and monitoring system.
 
-* *event processing* [stream processor is used a synonym in this
-  document] is the ability to apply a function over a set of events,
-  for instance, *average* or *max*;
+As expected, leela has one core abstraction which is the *event*. It
+is an object with an arbritrary name and a numeric value associated.
 
-* *monitoring* is the task of applying any *stream processor* to real
-  time events, as they arrive, allowing one to report anomalies, like
-  cpu usage, or make sure a given service is up and running;
+The processing of the events in leela is the possibility of applying
+arbitrary functions over the data [e.g. *average* or computing the
+*standard deviation*]. This can happen in two different phases:
 
-* *analyzing* is hereby defined as the task of retrieving stored data
-  [say the past 6 months] and, optionally, applying a stream processor
-  over this data. As an example, suppose you want the past year data
-  but with a lower resolution.
+Monitoring
+==========
+
+It is defined as the ability to applying a function to real time
+events, as they arrive, and publishing this results to interested
+parties.
+
+As a example, consider the possibility of monitoring the average of
+cpu usage and sending an email whenever this value gets over a certain
+threshold.
+
+Analyzes
+========
+
+Similarly, it is the possibility of applying a function over events,
+but this time using stored data instead of real time data. As an
+example, suppose you want to graph the 95 percentile of the
+requests/second of your webserver for the past 6 months.
