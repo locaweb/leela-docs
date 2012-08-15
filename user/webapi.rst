@@ -7,12 +7,13 @@ to all resources:
 
 * All resources support the *JSON-P* protocol by appending the
   ``callback`` parameter to the URL;
+
 * Currently only JSON format is supported;
 
 Resources
 =========
 
-/v1/:key/:year/:month
+/v1/:year/:month/:key
 ---------------------
 
 Retrieves data from the given month.
@@ -21,7 +22,7 @@ Retrieves data from the given month.
 :year: the year [4 digits];
 :month: the month [numeric, starts with 1];
 
-/v1/:key/:year/:month/:day
+/v1/:year/:month/:day/:key
 --------------------------
 
 Retrieves data from the given day.
@@ -31,14 +32,14 @@ Retrieves data from the given day.
 :month: the month [numeric, starts with 1];
 :day: the day of month [numeric, starts with 1];
 
-/v1/:key/past24
+/v1/past24/:key
 ---------------
 
 Retrieves data from the past 24 hours.
 
 :key: the event to load [e.g. localhost.cpu.idle];
 
-/v1/:key/pastweek
+/v1/pastweek/:key
 -----------------
 
 Retrieves data from the past week (7 days).
@@ -79,21 +80,27 @@ payload: success case
 
 ::
 
-  {"request.uri": string,
-   "results": {key: timeseries}
+  { "debug": { "request_uri": string
+             , "request_time": float
+             }
+  , "results": { KEY: { "series": TIMESERIES
+                      }
+               }
   }
 
-:request.uri: the resource used to retrieve this data;
-:key: the event requested;
-:timeseries: A list with a 2-tuple ``[timestamp, value]``;
+:KEY: the event requested;
+:TIMESERIES: A list with a 2-tuple ``[timestamp, value]``;
 
 Example:
 
 ::
 
-  {"request.uri": "/v1/localhost.cpu.idle/past24",
-
-   "results": {"localhost.cpu.idle": [ [0,  0],
-                                       [60, 12.5]
-                                     ]}
+  { "debug": { "request_uri": "/v1/localhost.cpu.idle/past24"
+             , "request_time": 0.002
+             }
+  , "results": { "localhost.cpu.idle": { series: [ [0,  0],
+                                                   [60, 12.5]
+                                                 ]
+                                       }
+               }
   }
