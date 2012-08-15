@@ -46,12 +46,12 @@ Storing data
 Retrieving data
 ---------------
 
-* :doc:`The webapi <user/webapi>`
+* :doc:`REST API <user/restapi>`
 
 .. toctree::
   :hidden:
 
-  user/webapi
+  user/restapi
 
 Contribute
 ==========
