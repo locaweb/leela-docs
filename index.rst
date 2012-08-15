@@ -20,11 +20,13 @@ Learn
 
 
 * :doc:`About the project <intro/overview>`
+* :doc:`Architecture in a nutshell <intro/archnut>`
 
 .. toctree::
   :hidden:
 
   intro/overview
+  intro/archnut
 
 Users manual
 ============
