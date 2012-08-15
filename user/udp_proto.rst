@@ -1,0 +1,32 @@
+==============
+ UDP Protocol
+==============
+
+When using UDP, the protocol is fairly simple:
+
+::
+
+  <name>: <value> [timestamp]\n
+
+:name: Any string, up to 255 characters;
+
+:value: Any double value;
+
+:timestamp: [optional] the unix timestamp you want to store this
+  event. If you don't provide this value the server will use the
+  current timestamp;
+
+There is no *ack* [=confirmation the event was received]
+whatsoever. If you need such a feature, use a different protocol
+[e.g. TCP].
+
+Example
+=======
+
+Assuming you have ``netcat``, and the server up and running, the following
+shell commands should work:
+
+::
+
+  $ echo "example.e0: 0.75" | nc -u localhost 6968
+  $ echo "example.e0: 0.76" | nc -u localhost 6968

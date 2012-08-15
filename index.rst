@@ -28,20 +28,18 @@ Learn
   intro/overview
   intro/archnut
 
-Users manual
-============
+Users guide
+===========
 
 Storing data
 ------------
 
-* :doc:`The event protocol <user/protocol>`
-* :doc:`Network interfaces <user/netinterfaces>`
+* :doc:`UDP protocol <user/udp_proto>`
 
 .. toctree::
   :hidden:
 
-  user/protocol
-  user/netinterfaces
+  user/udp
 
 Retrieving data
 ---------------
@@ -53,8 +51,8 @@ Retrieving data
 
   user/restapi
 
-Contribute
-==========
+Devel Guides
+============
 
 * :doc:`Architecture <devel/architecture>`
 

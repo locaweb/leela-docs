@@ -20,18 +20,16 @@ to monitor and analyze the data.
 Server
 ======
 
-The frontend for the *core* that exposes serveral interfaces (UDP,
-TCP, HTTP, XMPP) to interact with the core to store, retrieve or
-monitor the data;
+The frontend that exposes serveral interfaces (UDP, TCP, HTTP, XMPP)
+to interact with the core.
 
 In some sense you may think of it as a transport layer.
 
 Client
 ======
 
-Currently a python API (but there are plans to support other
-languages) that allows one to collect information or monitor services
-and send data to the server;
+A Python API that provides you the means to communicate with the
+server.
 
 Relay
 =====
