@@ -95,7 +95,7 @@ Example:
 
 ::
 
-  { "debug": { "request_uri": "/v1/localhost.cpu.idle/past24"
+  { "debug": { "request_uri": "/v1/past24/localhost.cpu.idle"
              , "request_time": 0.002
              }
   , "results": { "localhost.cpu.idle": { series: [ [0,  0],
