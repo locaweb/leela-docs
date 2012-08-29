@@ -45,11 +45,13 @@ Retrieving data
 ---------------
 
 * :doc:`REST API <user/restapi>`
+* :doc:`Javascript widget (graphing) <user/jswidget>`
 
 .. toctree::
   :hidden:
 
   user/restapi
+  user/jswidget
 
 Devel Guides
 ============
