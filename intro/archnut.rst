@@ -2,16 +2,16 @@
  Architecture in a nutshell
 ============================
 
-Leela in a nutshell is a toolbox that allows you to analyze and
-monitor real time events.
+Leela is a software that allows you to analyze stored data and monitor
+real time events.
 
-The main abstraction is the event, which is a key-value pair that the
-system stores and allows you to retrieve and monitor using a very rich
-set of protocols.
+Unsurprisingly, the main abstraction is the event. That is a key-value
+structure with a timestamp associated that the system allows you to
+store, retrieve and manipulate.
 
-Examples of usage including graphing the cpu usage from the past of a
-set of machines, or monitoring memory consumption and triggering
-alerts when it hits a given threshold.
+Examples of usage includes graphing the cpu usage of the past week, or
+monitoring memory consumption using moving average, possibly taking
+some action when this values hits above a certain threshold.
 
 .. image:: https://docs.google.com/drawings/pub?id=10lnt1ADTlG0WNhYBEDBBKTnCwn3n7fVBzpNgyhN8XNA&w=960&h=720
    :height: 720px
@@ -20,36 +20,31 @@ alerts when it hits a given threshold.
    :align: center
 
 LeCore
-====
+======
 
 It is the engine that supports the entire stack of leela. By design it
-has a very small set of primitives. Its purpose is to provide the
-features necessary to enable frontends (e.g. leela-server) to create a
-richer set of functionality.
+has a very small set of primitives. Its sole purpose is to provide the
+foundation necessary to enable frontends (e.g. leela-server) to create
+a richer set of features.
 
-This is the component responsible for managing the storage backends
-[=store, load & delete] and provides the primitives to monitor
-[=watch].
+This is the component responsible for managing the storage backends [=
+*store*, *load* & *delete*] and provides the primitives to monitor
+real time events [= *watch*].
 
-Also it allows you to transform the data through a very simple
+It also allows you to transform the data through a very simple
 map-reduce API.
+
+Currently it uses cassandra, for now its sole storage backend, to
+store data.
 
 Frontend
 ========
 
-The main purpose is to enable clients to interact with the *lecore*
-component. It exposes several protocols for that purpose, for
-instance, the xmpp protocol is used to monitor real-time data.
+It provides an interface to manage the data [through the core] using a
+rich set of protocols. For instance, the HTTP interface is for
+retrieving stored data using JSON format, whereas the XMPP interface
+is designed to monitoring real time events.
 
-As the core is minimalist, it adds important layers to the stack, for
-instance authentication.
-
-Cassandra
-=========
-
-The default storage backend, managed by the core.
-
-Redis
-=====
-
-Used by the frontend to various, low volume, administrative tasks.
+Redis is used by the frontend to various, low volume, administrative
+tasks, like propagating xmpp channels through the possibly many
+instances of leela-server frontends.
