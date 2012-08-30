@@ -22,8 +22,8 @@ As a example, consider the possibility of monitoring the average of
 cpu usage and sending an email whenever this value gets over a certain
 threshold.
 
-Analyzes
-========
+Analyzing
+=========
 
 Similarly, it is the possibility of applying a function over events,
 but this time using stored data instead of real time data. As an
