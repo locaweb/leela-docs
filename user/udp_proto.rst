@@ -6,7 +6,7 @@ When using UDP, the protocol is fairly simple:
 
 ::
 
-  <name>: <value> [timestamp]\n
+  <name>: <value> [timestamp] [tags]\n
 
 :name: Any string, up to 255 characters;
 
@@ -16,9 +16,17 @@ When using UDP, the protocol is fairly simple:
   event. If you don't provide this value the server will use the
   current timestamp;
 
+:tags: [optional] the current flags are currently defined:
+
+       :T: mark the event as transient, i.e., data will not be
+           persisted (useful for high-frequency data that you only
+           want to monitor);
+
 There is no *ack* [=confirmation the event was received]
-whatsoever. If you need such a feature, use a different protocol
-[e.g. TCP].
+whatsoever. There is no authentication nor authorization. Also
+remember the transport protocol is *UDP*.
+
+If you need such a features, use a different protocol.
 
 Example
 =======
@@ -29,4 +37,4 @@ shell commands should work:
 ::
 
   $ echo "example.e0: 0.75" | nc -u localhost 6968
-  $ echo "example.e0: 0.76" | nc -u localhost 6968
+  $ echo "example.e1: 0.76" | nc -u localhost 6968
