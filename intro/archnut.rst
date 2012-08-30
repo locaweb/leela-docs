@@ -22,8 +22,7 @@ This is the component responsible for managing the storage backends [=
 *store*, *load* & *delete*] and provides the primitives to monitor
 real time events [= *watch*].
 
-It also allows you to transform the data through a very simple
-map-reduce API.
+It also allows you to transform the data through a very simple DSL.
 
 Currently it uses cassandra, for now its sole storage backend, to
 store data.
