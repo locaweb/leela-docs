@@ -2,16 +2,11 @@
  Architecture in a nutshell
 ============================
 
-Leela is a software that allows you to analyze stored data and monitor
-real time events.
-
-Unsurprisingly, the main abstraction is the event. That is a key-value
-structure with a timestamp associated that the system allows you to
+Unsurprisingly, as stated before, the main abstraction is the event. That is a
+key-value structure with a timestamp associated that the system allows you to
 store, retrieve and manipulate.
 
-Examples of usage includes graphing the cpu usage of the past week, or
-monitoring memory consumption using moving average, possibly taking
-some action when this values hits above a certain threshold.
+Following a high level description of its main components:
 
 .. image:: https://docs.google.com/drawings/pub?id=10lnt1ADTlG0WNhYBEDBBKTnCwn3n7fVBzpNgyhN8XNA&w=960&h=720
    :height: 720px
