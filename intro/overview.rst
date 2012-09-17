@@ -5,7 +5,7 @@
 In short leela is an event processor and monitoring system.
 
 As expected, leela has one core abstraction which is the *event*. It
-is an object with an arbritrary name and a numeric value associated.
+is an object with an arbitrary name and a numeric value associated.
 
 The processing of the events in leela is the possibility of applying
 arbitrary functions over the data [e.g. *average* or computing the
@@ -18,7 +18,7 @@ It is defined as the ability to applying a function to real time
 events, as they arrive, and publishing this results to interested
 parties.
 
-As a example, consider the possibility of monitoring the average of
+As an example, consider the possibility of monitoring the average of
 cpu usage and sending an email whenever this value gets over a certain
 threshold.
 
