@@ -1,6 +1,6 @@
-==============
- UDP Protocol
-==============
+===============
+ UDP Interface
+===============
 
 The protocol is fairly simple:
 

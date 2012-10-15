@@ -1,6 +1,6 @@
-===============
- XMPP Protocol
-===============
+================
+ XMPP Interface
+================
 
 The *XMPP* protocol allows you to monitor real time events. The
 protocol supports a simple query language that enables one to
