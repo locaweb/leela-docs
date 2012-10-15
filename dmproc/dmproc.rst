@@ -78,7 +78,8 @@ sma :n
 ------
 
 Computes the `simple moving average
-<http://en.wikipedia.org/wiki/Moving_average#Simple_moving_average>`_ of ``n`` items.
+<http://en.wikipedia.org/w/index.php?title=Moving_average&oldid=516268388#Simple_moving_average>`_
+of ``n`` items.
 
 **Arguments:**
 
