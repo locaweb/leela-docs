@@ -7,11 +7,10 @@
  Leela project
 ===============
 
-Collects anything, monitors anything and analyzes anything.
+Distributed event processor and monitoring system.
 
-  * simple network protocol;
-  * pluggable storage backend;
   * auto discovery;
+  * simple network protocol;
   * monitors real time events;
   * analyzes historical data;
 
@@ -34,24 +33,34 @@ Users guide
 Storing data
 ------------
 
-* :doc:`UDP protocol <user/udp_proto>`
+* :doc:`UDP interface <fe/udp>`
 
 .. toctree::
   :hidden:
 
-  user/udp
+  fe/udp
 
 Retrieving data
 ---------------
 
-* :doc:`REST API <user/restapi>`
-* :doc:`Javascript widget (graphing) <user/jswidget>`
+* :doc:`HTTP interface <fe/http>`
+* :doc:`XMPP interface <fe/xmpp>`
 
 .. toctree::
   :hidden:
 
-  user/restapi
-  user/jswidget
+  fe/http
+  fe/xmpp
+
+dmproc
+------
+
+* :doc:`Stream processor language <dmproc/dmproc>`
+
+.. toctree::
+  :hidden:
+
+  dmproc/dmproc
 
 Devel Guides
 ============

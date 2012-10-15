@@ -1,0 +1,122 @@
+===============
+ XMPP Protocol
+===============
+
+The *XMPP* protocol allows you to monitor real time events. The
+protocol supports a simple query language that enables one to
+transform the events in a suitable manner.
+
+Following a list of commands that are currently supported.
+
+Commands
+========
+
+The syntax is defined as follows [ABNF]::
+
+
+  CMD      = SELECT
+           / DELETE
+  EOL      = ";"
+  SELECT   = "SELECT" SP PROC SP "FROM" GLOB *("," SP GLOB) EOL
+           / "SELECT * FROM leela.xmpp" EOL
+  DELETE   = "DELETE FROM leela.xmpp" EOL
+           / "DELETE FROM leela.xmpp WHERE key=" 1*(ALPHA) EOL
+  PROC     =                                                    ; dmproc function. Refer to dmproc documentation for available functions
+  GLOB     = 1*(UTF8-STRING)                                    ; except "," which has special meaning.
+
+All commands are executed modulo de current user. In other words, the
+commands are isolated by the current user account.
+
+SELECT * FROM leela.xmpp;
+-------------------------
+
+Returns the current registered functions. Example::
+
+  SELECT * FROM leela.xmpp;
+  { "status": 200,
+    "results": [ { "cmd": "SELECT id FROM hm6177.cpu.cpu.idle;",
+                   "key": "b0acdfe11875c074c760bfa8e34da49c1dfe73bd998bf720efc349c6bfd31d756d9b88f23894dbfe3555bddd2d9d7a890ac09831fe3ad6ea469ca3f52bf3fd0a"
+                 }
+               ]
+  }
+
+The ``results`` entry contains an object with the following keys:
+
+:cmd: The registered query;
+:key: An opaque string that references this query. You may use this in
+      a ``DELETE`` command to unregister this query;
+
+SELECT :proc FROM :glob;
+------------------------
+
+Registers a new function to monitor real time events. Example::
+
+  SELECT id FROM *.cpu.cpu.idle;
+  { "status": 200,
+    "results": { "key": "baa7163f7b51c3e96d7ee54e08a147840c1c2a682c89cbae2edd288506954dd568980394a827c1d4fb339e2a928e55ff36c277b73cac9be417a1c80c2086ea6f"
+               }
+  }
+
+The ``glob`` is an usual shell glob syntax and ``proc`` is a function
+to transform apply over these events. The complete reference may be
+found at :doc:`dmproc <../dmproc/dmproc>`.
+
+This command returns an structure with the following keys:
+
+:key: An opaque string that references this query. You may use this in
+      a ``DELETE`` command to unregister this query;
+
+DELETE FROM leela.xmpp;
+-----------------------
+
+Unregister all functions registered for this account. Example::
+
+  DELETE FROM leela.xmpp;
+  { "status": 200,
+    "results": [ { "key": "baa7163f7b51c3e96d7ee54e08a147840c1c2a682c89cbae2edd288506954dd568980394a827c1d4fb339e2a928e55ff36c277b73cac9be417a1c80c2086ea6f"
+                 }
+               ]
+  }
+
+DELETE FROM leela.xmpp WHERE key=:key;
+--------------------------------------
+
+Unregister a function referenced by a given key. Example::
+ 
+  DELETE FROM leela.xmpp WHERE key=284692849396a112668bbaa3dbc30e9d5c097c31998ec0569938d8cb0aaee9a282852fa56cdfaaf3aa953e76cf40315e399f851c3613a1f560f77a1553bd899e;
+  { "status": 200,
+    "results": { "key": "284692849396a112668bbaa3dbc30e9d5c097c31998ec0569938d8cb0aaee9a282852fa56cdfaaf3aa953e76cf40315e399f851c3613a1f560f77a1553bd899e"
+               }
+  }
+
+Response structure
+==================
+
+All messages follows this structure::
+
+  {"status":INTEGER, "debug":OBJECT, "reason":STRING, "results":OBJECT}
+
+Status
+------
+
+:200: Success;
+
+:403: Access denied;
+
+:404: the requested data could not be found (invalid range, missing
+      event etc.);
+
+:500: internal server error;
+
+:400: you did something wrong;
+
+Reason
+------
+
+In case of an error, this provides an human readable message to help
+you debug the root cause.
+
+Results
+-------
+
+The object you requested for. This vary greatly depending on the command.

@@ -1,6 +1,6 @@
-==========
- REST API
-==========
+===============
+ HTTP Protocol
+===============
 
 This exposes data via a *REST* interface. The following should apply
 to all resources:
