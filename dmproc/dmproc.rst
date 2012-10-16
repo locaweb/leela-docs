@@ -22,7 +22,7 @@ followed by zero or more arguments. For instance, the ``maximum``
 function, which computes the maximum value of a set of events, takes
 no arguments. Operators are the sole exception to this rule, as they
 are enclosed by parenthesis. Currently all functions (as well as
-operators) depends solely on the input. They will only produce a
+operators) depends only on the input. They will only produce a
 result when it receives one or more events. In other words, they are
 pure functions.
 
