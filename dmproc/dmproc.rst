@@ -85,7 +85,7 @@ of ``n`` items.
 
 :n: A positive integer number;
 
-sample :n :m
+sample :n/:m
 ------------
 
 Samples ``n`` elements out from a population of ``m`` items. The exact
@@ -98,6 +98,10 @@ follows. Let ``L`` the total of elements::
 
 :n: The number of elements pick out of `m`;
 :m: The so called population size;
+
+**Example:**::
+  
+  sma 30 | sample 1/5
 
 minimum
 -------
