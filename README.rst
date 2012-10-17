@@ -2,14 +2,19 @@
 LEELA
 =====
 
-The documentation is available at:
+Distributed, real time event processor and monitoring engine.
+
+Documentation
+=============
 
 * http://leela.readthedocs.org/
 
-The server project:
+Server project
+==============
 
   * https://github.com/locaweb/leela-server
 
-The client api bindings:
+Client sdk
+==========
 
   * https://github.com/locaweb/leela-client
