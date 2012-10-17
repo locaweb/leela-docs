@@ -6,26 +6,11 @@ The *XMPP* protocol allows you to monitor real time events. The
 protocol supports a simple query language that enables one to
 transform the events in a suitable manner.
 
-Following a list of commands that are currently supported.
-
-Commands
-========
-
-The syntax is defined as follows [ABNF]::
-
-
-  CMD      = SELECT
-           / DELETE
-  EOL      = ";"
-  SELECT   = "SELECT" SP PROC SP "FROM" GLOB *("," SP GLOB) EOL
-           / "SELECT * FROM leela.xmpp" EOL
-  DELETE   = "DELETE FROM leela.xmpp" EOL
-           / "DELETE FROM leela.xmpp WHERE key=" 1*(ALPHA) EOL
-  PROC     =                                                    ; dmproc function. Refer to dmproc documentation for available functions
-  GLOB     = 1*(UTF8-STRING)                                    ; except "," which has special meaning.
-
-All commands are executed modulo de current user. In other words, the
+The xmpp interface uses a simple *request-response* protocol and all
+commands are executed modulo de current user. In other words, the
 commands are isolated by the current user account.
+
+Following a list of commands that are currently supported.
 
 SELECT * FROM leela.xmpp;
 -------------------------
