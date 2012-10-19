@@ -31,20 +31,20 @@ The ``results`` entry contains an object with the following keys:
 :key: An opaque string that references this query. You may use this in
       a ``DELETE`` command to unregister this query;
 
-SELECT :proc FROM :glob;
+SELECT :proc FROM :regex;
 ------------------------
 
 Registers a new function to monitor real time events. Example::
 
-  SELECT id FROM *.cpu.cpu.idle;
+  SELECT id FROM ^.*.cpu.cpu.idle$;
   { "status": 200,
     "results": { "key": "baa7163f7b51c3e96d7ee54e08a147840c1c2a682c89cbae2edd288506954dd568980394a827c1d4fb339e2a928e55ff36c277b73cac9be417a1c80c2086ea6f"
                }
   }
 
-The ``glob`` is an usual shell glob syntax and ``proc`` is a function
-to transform apply over these events. The complete reference may be
-found at :doc:`dmproc <../dmproc/dmproc>`.
+The ``regex`` is a posix regular expression and ``proc`` is a function
+to apply over the events that matches the regex. The complete
+reference may be found at :doc:`dmproc <../dmproc/dmproc>`.
 
 This command returns an structure with the following keys:
 
