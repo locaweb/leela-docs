@@ -21,8 +21,8 @@ Each function contains a name, usually as ascii encoded string,
 followed by zero or more arguments. For instance, the ``maximum``
 function, which computes the maximum value of a set of events, takes
 no arguments. Operators are the sole exception to this rule, as they
-are enclosed by parenthesis. Currently all functions (as well as
-operators) depends only on the input. They will only produce a
+are enclosed by parenthesis or brackets. Currently all functions (as
+well as operators) depends only on the input. They will only produce a
 result when it receives one or more events. In other words, they are
 pure functions.
 
@@ -32,18 +32,24 @@ function as a combinator and using the pipe operator allow you to grow
 bigger pipelines. For instance, suppose you have a event that ranges
 from *0* to *1*, the following function should compute the *mean* of
 the current set of events and then multiply this value by *100* (left
-to right application)::
+to right application), only returning those *greater than 50*::
 
-  mean | (* 100)
+  mean | (* 100) | [> 50]
 
-Operators are always enclosed by parenthesis. The syntax allow the
-operator to be placed either on the left or right side. For instance,
-``(/ 100)`` will divide by 100 whereas ``(100 /)`` will divide 100 by
-the value of the event.
+Operators are always enclosed by parenthesis or brackets. Parenthesis
+are used for arithmetic operators whereas brackets are used for
+comparison operators. The syntax allow the operator to be placed
+either on the left or right side. For instance, ``(/ 100)`` will
+divide by 100 whereas ``(100 /)`` will divide 100 by the value of the
+event. The same applies for comparison operators.
 
-There are only four operators defined, the arithmetic operators:
+There are four arithmetic operators defined:
 ``*``, ``+``, ``-`` and ``/``, which respectively computes the
 *multiplication*, *addition*, *subtraction* and *division*.
+
+And there are six comparison operators defined: ``>`` [greater than],
+``<`` [less than], ``>=`` [greater than or equal to], ``<=`` [less
+than or equal to], ``=`` [equal to] and ``/=`` [not equal to].
 
 Functions reference
 ===================
@@ -155,7 +161,20 @@ The identity function: ``id x == x``.
 Operators reference
 ===================
 
-:+: Addition (e.g.: ``(+ 0)`` or ``(0 +)``);
-:-: Subtraction (e.g.: ``(- 0)`` or ``(0 -)``);
-:\*: Multiplication (e.g.: ``(* 1)`` or ``(1 *)``);
-:/: Division (e.g.: ``(/ 1)`` or ``(1 /)``);
+Arithmetic
+----------
+
+:+: Addition (e.g.: ``(+ n)`` or ``(n +)``);
+:-: Subtraction (e.g.: ``(- n)`` or ``(n -)``);
+:\*: Multiplication (e.g.: ``(* n)`` or ``(n *)``);
+:/: Division (e.g.: ``(/ n)`` or ``(n /)``);
+
+Comparison
+----------
+
+:>: Greater than (e.g: ``[> n]`` or ``[n >]``)
+:>=: Greater than or equal to (e.g: ``[>= n]`` or ``[n >=]``)
+:<=: Less than equal to (e.g: ``[<= n]`` or ``[n <=]``)
+:>: Less than (e.g: ``[< n]`` or ``[< n]``)
+:=: Equal to (e.g: ``[n =]`` or ``[= n]``)
+:/=: Not equal to (e.g: ``[n /=]`` or ``[/= n]``)
