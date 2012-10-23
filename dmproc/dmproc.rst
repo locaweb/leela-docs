@@ -155,7 +155,7 @@ The identity function: ``id x == x``.
 Operators reference
 ===================
 
-:+: Adds some number (e.g.: ``(+ 0)``);
-:-: Subtracts some number (e.g.: ``(- 0)``);
-:\*: Multiplies by some number (e.g.: ``(* 1)``);
-:/: Divides by some number (e.g.: ``(/ 1)``);
+:+: Addition (e.g.: ``(+ 0)``, ``(0 +)``);
+:-: Subtraction (e.g.: ``(- 0)``, ``(0 -)``);
+:\*: Multiplication (e.g.: ``(* 1)``, ``(1 *)``);
+:/: Division (e.g.: ``(/ 1)``, ``(1 /)``);
