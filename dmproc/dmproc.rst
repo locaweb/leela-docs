@@ -36,10 +36,14 @@ to right application)::
 
   mean | (* 100)
 
-Operators are always enclosed by parenthesis, with the operand always
-on the right. There are only four operators defined, the arithmetic
-operators: ``*``, ``+``, ``-`` and ``/``, which respectively computes
-the *multiplication*, *addition*, *subtraction* and *division*.
+Operators are always enclosed by parenthesis. The syntax allow the
+operator to be placed either on the left or right side. For instance,
+``(/ 100)`` will divide by 100 whereas ``(100 /)`` will divide 100 by
+the value of the event.
+
+There are only four operators defined, the arithmetic operators:
+``*``, ``+``, ``-`` and ``/``, which respectively computes the
+*multiplication*, *addition*, *subtraction* and *division*.
 
 Functions reference
 ===================
