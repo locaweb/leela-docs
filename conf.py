@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'leela'
-copyright = u'2012, Diego Souza, Juliano Martinez'
+copyright = u'2012, Diego Souza - Locaweb, Juliano Martinez - Locaweb'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -184,7 +184,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'leela.tex', u'leela Documentation',
-   u'Diego Souza, Juliano Martinez', 'manual'),
+   u'Diego Souza - Locaweb, Juliano Martinez - Locaweb', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -214,7 +214,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'leela', u'leela Documentation',
-     [u'Diego Souza, Juliano Martinez'], 1)
+     [u'Diego Souza - Locaweb, Juliano Martinez - Locaweb'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -228,7 +228,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'leela', u'leela Documentation',
-   u'Diego Souza, Juliano Martinez', 'leela', 'One line description of project.',
+   u'Diego Souza - Locaweb, Juliano Martinez - Locaweb', 'leela', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -246,9 +246,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'leela'
-epub_author = u'Diego Souza, Juliano Martinez'
-epub_publisher = u'Diego Souza, Juliano Martinez'
-epub_copyright = u'2012, Diego Souza, Juliano Martinez'
+epub_author = u'Diego Souza - Locaweb, Juliano Martinez - Locaweb'
+epub_publisher = u'Diego Souza - Locaweb, Juliano Martinez - Locaweb'
+epub_copyright = u'2012, Diego Souza - Locaweb, Juliano Martinez - Locaweb'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
