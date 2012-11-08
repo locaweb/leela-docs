@@ -105,7 +105,8 @@ payload: success case
 
   { "results": { KEY: { "series": TIMESERIES
                       }
-               }
+               },
+    "status": 200
   }
 
 :KEY: the event requested;
@@ -119,5 +120,6 @@ Example:
                                                    [60, 12.5]
                                                  ]
                                        }
-               }
+               },
+    "status": 200
   }
