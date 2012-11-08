@@ -32,7 +32,7 @@ The ``results`` entry contains an object with the following keys:
       a ``DELETE`` command to unregister this query;
 
 SELECT :proc FROM :regex;
-------------------------
+-------------------------
 
 Registers a new function to monitor real time events. Example::
 

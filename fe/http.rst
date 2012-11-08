@@ -6,14 +6,27 @@ This exposes data via a *REST* interface. The following should apply
 to all resources:
 
 * All resources support the *JSON-P* protocol by appending the
-  ``callback`` parameter to the URL;
+  ``callback`` parameter to the URL::
+
+  /v1/foobar?callback=my_handler
 
 * Currently only JSON format is supported;
+
+* Brackets in URLs means optional arguments. For instance
+  ``/v1/[data/]foobar`` represents two distinct resources:
+
+  a. /v1/foobar
+  b. /v1/data/foobar
+
+* You may add ``debug=true`` to enable debug information, as follows
+  (defaults to ``false``):
+
+  /v1/foobar?debug=true
 
 Resources
 =========
 
-/v1/:year/:month/:key
+/v1/[data/]:year/:month/:key
 ---------------------
 
 Retrieves data from the given month.
@@ -22,7 +35,7 @@ Retrieves data from the given month.
 :year: the year [4 digits];
 :month: the month [numeric, starts with 1];
 
-/v1/:year/:month/:day/:key
+/v1/[data/]:year/:month/:day/:key
 --------------------------
 
 Retrieves data from the given day.
@@ -32,19 +45,28 @@ Retrieves data from the given day.
 :month: the month [numeric, starts with 1];
 :day: the day of month [numeric, starts with 1];
 
-/v1/past24/:key
+/v1/[data/]past24/:key
 ---------------
 
 Retrieves data from the past 24 hours.
 
 :key: the event to load [e.g. localhost.cpu.idle];
 
-/v1/pastweek/:key
+/v1/[data/]pastweek/:key
 -----------------
 
 Retrieves data from the past week (7 days).
 
 :key: the event to load [e.g. localhost.cpu.idle];
+
+/v1/[data/]range/:key?start=TIMESPEC&finish=TIMESPEC
+
+Retrieves data within a given time range.
+
+:key: The event to load [e.g. localhost.cpu.cpu.idle];
+:start: The start date. Make sure ``start <= finish``;
+:finish: The finish date. Make sure the ``finish >= start``;
+:TIMESPEC: %Y%m%dT%H%M [e.g. 20120101T2040];
 
 Response Codes
 ==============
@@ -63,16 +85,16 @@ Payload: failure case
 
 ::
 
-  {"code": int, "message": string}
+  {"status": int, "reason": string}
 
-:code: the http response code (e.g. 200, 400);
-:message: a very short description of what went wrong;
+:status: the http response code (e.g. 200, 400);
+:reason: a very short description of what went wrong;
 
 Example:
 
 ::
 
-  {"code": 404, "message": "no event found"}
+  {"status": 404, "reason": "no event found"}
 
 
 payload: success case
@@ -80,10 +102,7 @@ payload: success case
 
 ::
 
-  { "debug": { "request_uri": string
-             , "request_time": float
-             }
-  , "results": { KEY: { "series": TIMESERIES
+  { "results": { KEY: { "series": TIMESERIES
                       }
                }
   }
@@ -95,10 +114,7 @@ Example:
 
 ::
 
-  { "debug": { "request_uri": "/v1/past24/localhost.cpu.idle"
-             , "request_time": 0.002
-             }
-  , "results": { "localhost.cpu.idle": { series: [ [0,  0],
+  { "results": { "localhost.cpu.idle": { series: [ [0,  0],
                                                    [60, 12.5]
                                                  ]
                                        }
