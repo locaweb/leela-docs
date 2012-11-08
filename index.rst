@@ -19,7 +19,6 @@ Learn
 
 
 * :doc:`About the project <intro/overview>`
-* :doc:`Architecture in a nutshell <intro/archnut>`
 
 .. toctree::
   :hidden:
@@ -62,19 +61,11 @@ dmproc
 
   dmproc/dmproc
 
-Devel Guides
-============
-
-* :doc:`Architecture <devel/architecture>`
-
-.. toctree::
-  :hidden:
-
-  devel/architecture
-
 Help
 ====
 
 Having problems, questions or suggestions? Don't hesitate to reach us!
 
-* TODO:fixme
+* IRC(freenode): #leela;
+
+* leela@listadev.email.locaweb.com.br;
