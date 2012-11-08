@@ -65,9 +65,9 @@ Retrieves data from the past week (7 days).
 Retrieves data within a given time range.
 
 :key: The event to load [e.g. localhost.cpu.cpu.idle];
-:start: The start date. Make sure ``start <= finish``;
-:finish: The finish date. Make sure the ``finish >= start``;
-:TIMESPEC: ``:YEAR:MONTH:DAYT:HOUR:MINUTE`` [e.g. 20120101T2040];
+:start: The start date, UTC. Make sure ``start <= finish``;
+:finish: The finish date, UTC. Make sure the ``finish >= start``;
+:TIMESPEC: ``:YEAR:MONTH:DAYT:HOUR:MINUTE`` [e.g. 20120101T2040].
 
 Response Codes
 ==============
