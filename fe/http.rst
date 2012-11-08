@@ -12,14 +12,15 @@ to all resources:
 
 * Currently only JSON format is supported;
 
-* Brackets in URLs means optional arguments. For instance
+* Brackets means that component is optional. For instance
   ``/v1/[data/]foobar`` represents two distinct resources:
 
-  a. /v1/foobar
-  b. /v1/data/foobar
+  a. ``/v1/foobar``
+
+  b. ``/v1/data/foobar``
 
 * You may add ``debug=true`` to enable debug information, as follows
-  (defaults to ``false``):
+  (defaults to ``false``)::
 
   /v1/foobar?debug=true
 
@@ -66,7 +67,7 @@ Retrieves data within a given time range.
 :key: The event to load [e.g. localhost.cpu.cpu.idle];
 :start: The start date. Make sure ``start <= finish``;
 :finish: The finish date. Make sure the ``finish >= start``;
-:TIMESPEC: %Y%m%dT%H%M [e.g. 20120101T2040];
+:TIMESPEC: ``:YEAR:MONTH:DAYT:HOUR:MINUTE`` [e.g. 20120101T2040];
 
 Response Codes
 ==============
