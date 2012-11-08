@@ -91,8 +91,8 @@ Response Codes
 
 :503: Maintanance;
 
-Payload: failure case
----------------------
+Payload failure case
+--------------------
 
 ::
 
@@ -108,8 +108,8 @@ Example:
   {"status": 404, "reason": "no event found"}
 
 
-payload: success case
----------------------
+Payload success case
+--------------------
 
 ::
 
