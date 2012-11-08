@@ -72,14 +72,24 @@ Retrieves data within a given time range.
 Response Codes
 ==============
 
+:2xx: Ok;
+
 :200: Success;
 
-:404: the requested data could not be found (invalid range, missing
+:201: Created;
+
+:4xx: Client error;
+
+:404: The requested data could not be found (invalid range, missing
       event etc.);
 
-:500: internal server error;
+:400: You did something wrong;
 
-:400: you did something wrong;
+:5xx: Server error;
+
+:500: Internal server error;
+
+:503: Maintanance;
 
 Payload: failure case
 ---------------------
