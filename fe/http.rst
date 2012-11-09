@@ -79,13 +79,13 @@ be a valid json, and the json must have at least the following keys:
 :name: The name to store this object. This must match with the name
        given in the URL;
 :timestamp: Unix timestamp (number of seconds since epoch);
-:value: The value to store;
+:value: The value to store under this key/timestamp;
 
 Example::
 
-  $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "data": :VALUE}'
-  { "status": 200,
-    "results": :VALUE
+  $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}'
+  { "status": 201,
+    "results": {"name": "foobar", "timestamp": 1352483918, "value": :VALUE}
   }
 
 Response Codes
