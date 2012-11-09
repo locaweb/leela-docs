@@ -83,7 +83,7 @@ be a valid json, and the json must have at least the following keys:
 
 Example::
 
-  $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}'
+  $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}' /v1/data/foobar
   { "status": 201,
     "results": {"name": "foobar", "timestamp": 1352483918, "value": :VALUE}
   }
