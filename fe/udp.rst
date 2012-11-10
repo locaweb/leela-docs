@@ -8,7 +8,7 @@ The protocol is fairly simple:
 
   <name>: <value> [timestamp]\n
 
-:name: Any unicode string (ascii encoded), up to 255 characters;
+:name: Any string (ascii encoded), up to 255 characters;
 
 :value: Any double value (e.g.: 0.0, nan, 3.2e12);
 
