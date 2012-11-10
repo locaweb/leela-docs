@@ -14,8 +14,8 @@ Distributed event processor and monitoring system.
   * monitors real time events;
   * analyzes historical data;
 
-Learn
-=====
+Learning
+========
 
 
 * :doc:`About the project <intro/overview>`
@@ -24,10 +24,9 @@ Learn
   :hidden:
 
   intro/overview
-  intro/archnut
 
-Users guide
-===========
+Using
+=====
 
 Storing data
 ------------
