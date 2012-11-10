@@ -43,21 +43,13 @@ Retrieving data
 
 * :doc:`HTTP interface <fe/http>`
 * :doc:`XMPP interface <fe/xmpp>`
+* :doc:`Stream processor language <dmproc/dmproc>`
 
 .. toctree::
   :hidden:
 
   fe/http
   fe/xmpp
-
-dmproc
-------
-
-* :doc:`Stream processor language <dmproc/dmproc>`
-
-.. toctree::
-  :hidden:
-
   dmproc/dmproc
 
 Help
