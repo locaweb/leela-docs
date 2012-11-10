@@ -248,6 +248,9 @@
     <div class="footer">
         {#        {%- block relbar2 %}{{ relbar(bottom=True) }}{% endblock %}#}
         <div class="container">
+            <a href="http://locaweb.com.br/">
+            <img src="{{ pathto('_static/locaweb.png', 1) }}" alt="Locaweb"/>
+            </a>
             {%- if show_copyright %}
                 {%- if hasdoc('copyright') %}
                     {% trans path=pathto('copyright'), copyright=copyright|e %}&copy;
@@ -263,6 +266,7 @@
                     on {{ last_updated }}.{% endtrans %}
             {%- endif %}
             {%- if show_sphinx %}
+                <div>
                 {% trans sphinx_version=sphinx_version|e %}Created using <a
                         href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}
                     .{% endtrans %}
@@ -271,6 +275,7 @@
                 <a href="http://twitter.github.com/bootstrap/">Twitter's
                     Bootstrap</a> by <a href="http://www.scotchmedia.com">Scotch
                 Media</a>
+                </div>
             {%- endif %}
         </div>
     </div>
