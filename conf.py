@@ -101,7 +101,7 @@ html_theme_options = {
     'github_user': 'locaweb',
     'github_repo': 'leela-server',
     'home_url': 'http://leela.rtfd.org',
-    'bootstrap_theme': 'http://locastyle.locaweb.com.br/assets/application-e7ba404862b7d5783463257cae9438e3.css'
+    'bootstrap_theme': '//locastyle.locaweb.com.br/assets/application-e7ba404862b7d5783463257cae9438e3.css'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
