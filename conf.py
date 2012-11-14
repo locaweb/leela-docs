@@ -100,7 +100,8 @@ html_theme_options = {
     'analytics_code': 'UA-00000000-1',
     'github_user': 'locaweb',
     'github_repo': 'leela-server',
-    'home_url': 'http://leela.rtfd.org'
+    'home_url': 'http://leela.rtfd.org',
+    'bootstrap_theme': '_static/bootstrap-united.min.css'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
