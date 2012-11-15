@@ -55,7 +55,7 @@ Retrieving data
   fe/xmpp
   dmproc/dmproc
 
-CHANGELOG
+Changelog
 =========
 
 * https://raw.github.com/locaweb/leela-server/master/CHANGELOG
