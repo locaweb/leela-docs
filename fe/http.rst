@@ -88,7 +88,7 @@ Retrieves data within a given time range.
 :key: The event to load [e.g. localhost.cpu.cpu.idle];
 
 Query String
-~~~~~~~~~~~~
+++++++++++++
 
 :start: The start date, UTC. Make sure ``start <= finish``;
 :finish: The finish date, UTC. Make sure the ``finish >= start``;
@@ -97,9 +97,7 @@ Use the following *strftime* time format::
 
   %Y%m%dT%H%M
 
-Example
-~~~~~~~
-::
+Example::
 
   $ curl {endpoint}/v1/range/foobar?start=20120101T1430&finish=20120101T1500
   { "status": 200,
@@ -119,9 +117,7 @@ be a valid json, and the json must have at least the following keys:
 :timestamp: Unix timestamp (number of seconds since epoch);
 :value: The value to store under this key/timestamp;
 
-Example
-~~~~~~~
-::
+Example::
 
   $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}' {endpoint}/v1/data/foobar
   { "status": 201,
