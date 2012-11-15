@@ -13,7 +13,7 @@ commands are isolated by the current user account.
 Following a list of commands that are currently supported.
 
 SELECT * FROM leela.xmpp;
--------------------------
+=========================
 
 Returns the current registered functions. Example::
 
@@ -32,7 +32,7 @@ The ``results`` entry contains an object with the following keys:
       a ``DELETE`` command to unregister this query;
 
 SELECT :proc FROM :regex;
--------------------------
+=========================
 
 Registers a new function to monitor real time events. Example::
 
@@ -62,7 +62,7 @@ following message is created::
   }
 
 DELETE FROM leela.xmpp;
------------------------
+=======================
 
 Unregister all functions registered for this account. Example::
 
