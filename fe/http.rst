@@ -78,7 +78,7 @@ Retrieves data from the past week (7 days).
 **DEPRECATED: USE ``/v1/[data/]:key`` instead!!!**
 
 /v1/[data/]:key
----------------------
+---------------
 
 Method: ``GET``
 ~~~~~~~~~~~~~~~
@@ -104,10 +104,10 @@ Example::
     "results": ...
   }
 
+.. _http put v1/data/key:
+
 Method: ``PUT``
 ~~~~~~~~~~~~~~~
-
-Only defined for ``data/`` resource.
 
 Inserts a new data value under this key. The body of the request must
 be a valid json, and the json must have at least the following keys:
@@ -123,6 +123,10 @@ Example::
   { "status": 201,
     "results": {"name": "foobar", "timestamp": 1352483918, "value": :VALUE}
   }
+
+Notes:
+
+* Only defined for ``data/`` resource.
 
 Response Codes
 ==============
