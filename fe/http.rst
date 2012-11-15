@@ -30,6 +30,9 @@ Resources
 /v1/[data/]:year/:month/:key
 ----------------------------
 
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
 Retrieves data from the given month.
 
 :key: the event to load [e.g. localhost.cpu.idle];
@@ -38,6 +41,9 @@ Retrieves data from the given month.
 
 /v1/[data/]:year/:month/:day/:key
 ---------------------------------
+
+Method: ``GET``
+~~~~~~~~~~~~~~~
 
 Retrieves data from the given day.
 
@@ -49,6 +55,9 @@ Retrieves data from the given day.
 /v1/[data/]past24/:key
 ----------------------
 
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
 Retrieves data from the past 24 hours.
 
 :key: the event to load [e.g. localhost.cpu.idle];
@@ -56,12 +65,23 @@ Retrieves data from the past 24 hours.
 /v1/[data/]pastweek/:key
 ------------------------
 
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
 Retrieves data from the past week (7 days).
 
 :key: the event to load [e.g. localhost.cpu.idle];
 
 /v1/[data/]range/:key
 ---------------------
+
+**DEPRECATED: USE ``/v1/[data/]:key`` instead!!!**
+
+/v1/[data/]:key
+---------------------
+
+Method: ``GET``
+~~~~~~~~~~~~~~~
 
 Retrieves data within a given time range.
 
@@ -86,8 +106,10 @@ Example
     "results": ...
   }
 
-PUT /v1/data/:key
------------------
+Method: ``PUT``
+~~~~~~~~~~~~~~~
+
+Only defined for ``data/`` resource.
 
 Inserts a new data value under this key. The body of the request must
 be a valid json, and the json must have at least the following keys:
