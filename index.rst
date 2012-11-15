@@ -60,6 +60,11 @@ Changelog
 
 * https://raw.github.com/locaweb/leela-server/master/CHANGELOG
 
+License
+=======
+
+APACHE 2.0
+
 Help
 ====
 
