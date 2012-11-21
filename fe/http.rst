@@ -39,6 +39,14 @@ Retrieves data from the given month.
 :year: the year [4 digits];
 :month: the month [numeric, starts with 1];
 
+Query String
+++++++++++++
+
+:nan: Defines what to do with the NaN/Infinity. Possible values are:
+      
+      * purge: removes all nan/inf out form the response;
+      * allow: keeps nan values in the response;
+
 /v1/[data/]:year/:month/:day/:key
 ---------------------------------
 
@@ -52,6 +60,14 @@ Retrieves data from the given day.
 :month: the month [numeric, starts with 1];
 :day: the day of month [numeric, starts with 1];
 
+Query String
+++++++++++++
+
+:nan: Defines what to do with the NaN/Infinity. Possible values are:
+      
+      * purge: removes all nan/inf out form the response;
+      * allow: keeps nan values in the response;
+
 /v1/[data/]past24/:key
 ----------------------
 
@@ -62,6 +78,14 @@ Retrieves data from the past 24 hours.
 
 :key: the event to load [e.g. localhost.cpu.idle];
 
+Query String
+++++++++++++
+
+:nan: Defines what to do with the NaN/Infinity. Possible values are:
+      
+      * purge: removes all nan/inf out form the response;
+      * allow: keeps nan values in the response;
+
 /v1/[data/]pastweek/:key
 ------------------------
 
@@ -71,6 +95,14 @@ Method: ``GET``
 Retrieves data from the past week (7 days).
 
 :key: the event to load [e.g. localhost.cpu.idle];
+
+Query String
+++++++++++++
+
+:nan: Defines what to do with the NaN/Infinity. Possible values are:
+      
+      * purge: removes all nan/inf out form the response;
+      * allow: keeps nan values in the response;
 
 /v1/[data/]range/:key
 ---------------------
@@ -92,6 +124,10 @@ Query String
 
 :start: The start date, UTC. Make sure ``start <= finish``;
 :finish: The finish date, UTC. Make sure the ``finish >= start``;
+:nan: Defines what to do with the NaN/Infinity. Possible values are:
+      
+      * purge: removes all nan/inf out form the response;
+      * allow: keeps nan values in the response;
 
 Use the following *strftime* time format::
 

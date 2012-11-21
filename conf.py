@@ -48,7 +48,7 @@ copyright = u'2012, Diego Souza, Juliano Martinez'
 # built documents.
 #
 # The short X.Y version.
-version = "2.0.0"
+version = "2.1.0"
 # The full version, including alpha/beta/rc tags.
 release = version
 
