@@ -20,13 +20,26 @@ There is no *ack* [=confirmation the event was received], nor
 authentication, nor checksum [application level] whatsoever. If you
 need such a feature, use a different protocol [e.g. TCP].
 
-Example
-=======
+PING
+====
+
+The UDP protocol is also capable of receiving a PING message that can
+use used to test connectivity. The syntax is as follows:
+::
+
+  ping\n
+
+Examples
+========
 
 Assuming you have ``netcat``, and the server up and running, the following
 shell commands should work:
 
 ::
+
+  # the ping message
+  $ echo ping                          | nc -u localhost 6968
+  pong
 
   $ echo "example.e0: 0.75 1350332001" | nc -u localhost 6968
   $ echo "example.e0: 0.76"            | nc -u localhost 6968
