@@ -25,7 +25,10 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode', 'sphinxcontrib.blockdiag']
+
+blockdiag_fontpath  = './_static/dejavusansmono.ttf'
+blockdiag_antialias = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -41,14 +44,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Leela'
-copyright = u'2012, Diego Souza, Juliano Martinez'
+copyright = u'2013, Diego Souza'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = "2.1.0"
+version = "3.0.0"
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -99,9 +102,9 @@ html_theme = 'sphinx-bootstrap'
 html_theme_options = {
     'analytics_code': 'UA-00000000-1',
     'github_user': 'locaweb',
-    'github_repo': 'leela-server',
+    'github_repo': 'leela',
     'home_url': 'http://leela.rtfd.org',
-    'bootstrap_theme': '//locastyle.locaweb.com.br/assets/application-e7ba404862b7d5783463257cae9438e3.css'
+    'bootstrap_theme': 'http://bootswatch.com/cosmo/bootstrap.min.css'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -190,7 +193,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'leela.tex', u'Leela Documentation',
-   u'Diego Souza, Juliano Martinez', 'manual'),
+   u'Diego Souza', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -220,7 +223,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'leela', u'Leela Documentation',
-     [u'Diego Souza, Juliano Martinez'], 1)
+     [u'Diego Souza'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -234,7 +237,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'leela', u'Leela Documentation',
-   u'Diego Souza, Juliano Martinez', 'Leela', 'Distributed event processor and monitoring engine.',
+   u'Diego Souza', 'Leela', 'Distributed event processor and monitoring engine',
    'Miscellaneous'),
 ]
 
@@ -252,9 +255,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'Leela'
-epub_author = u'Diego Souza, Juliano Martinez'
-epub_publisher = u'Diego Souza, Juliano Martinez'
-epub_copyright = u'2012, Diego Souza, Juliano Martinez'
+epub_author = u'Diego Souza'
+epub_publisher = u'Diego Souza'
+epub_copyright = u'2013, Diego Souza'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

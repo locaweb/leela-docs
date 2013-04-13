@@ -9,14 +9,26 @@ Distributed, real time event processor and monitoring engine.
 Documentation
 =============
 
-* http://leela.readthedocs.org/
+* http://leela.rtfd.org/
 
-Server project
-==============
+Leela project
+=============
 
-  * https://github.com/locaweb/leela-server
+  * https://github.com/locaweb/leela
 
-Client sdk
-==========
+Contributing
+============
 
-  * https://github.com/locaweb/leela-client
+The following will install sphinx using virtualenv and start the
+server:
+::
+
+  $ ./scripts/bootstrap.sh
+
+The documentation should now be available here:
+::
+
+  $ open http://localhost:4080
+
+This script auto detects file modifications and rebuild the
+documentation.
