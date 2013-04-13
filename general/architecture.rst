@@ -53,13 +53,12 @@ Leela HTTP
 ==========
 
 This exposes the rest API which allows you to retrieve historical
-data. Currently it retrieves data from cassandra directly, but in the
-future all reading and writing to the storage will be go through the
-*leela-storage* service.
+data. It reads data from cassandra directly but in the future all
+reading and writing to the storage will be go through the
+leela-storage service.
 
-It is also possible to write events using this service. When it
-receives a write request, it simply forwards it to the timeline as the
-previous services do.
+The HTTP provides a read/write interface. Writing are simply forward
+to the timeline, as the previous components do.
 
 Timeline
 ========
@@ -91,7 +90,8 @@ Interested processes should continuously register themselves using the
 generates.
 
 The reason this must be a continuous operation is that the timeline
-purges dead nodes, i.e., nodes that are not sending register messages.
+purges dead nodes, i.e., nodes that are not sending register messages
+in a timely manner.
 
 DMPROC
 ======
@@ -108,10 +108,9 @@ DMPROC
 This is the engine that allows users to monitor metrics as soon as
 they are received. Once started, it register itself in timeline in
 order to receive events into the *databus* socket, and exposes its
-service through the *proc* socket, i.e. the socket clients like
-leela-xmpp uses to connect and use *dmproc*.
+service through the *proc* socket.
 
-The *proc* socket is the only one that is stream oriented. The
+The proc socket is the only one that is stream oriented. The
 protocol is fairly simple though. It prefixes all packets with its
 size, using a unsigned short [2 bytes] big endian encoded.
 
@@ -133,7 +132,7 @@ Leela XMPP
 
 Exposes its services as an user of a XMPP service using a language
 that resembles SQL. This module allows one to monitor metrics in real
-time.
+time via XMPP.
 
 .. blockdiag::
 
@@ -146,14 +145,14 @@ time.
      leela_xmpp <-> proc <-> dmproc;
    }
 
-The *redis* is used as a directory service. When a request is made by
-a user an new entry is written into the redis. Periodically, *leela
-xmpp* service reads from redis in order to know which users are
+The redis is used as a directory service. When a request is made by a
+user an new entry is written into the redis. Periodically, leela
+xmpp service reads from redis in order to know which users are
 requesting information. When a new entry is found, it establishes a
-connection with dmproc and the request starts being served. Similarly,
-whenever an entry is removed from redis the connection with dmproc is
-closed.
+connection with dmproc and any output is forwarded via XMPP to the
+users requesting the information. Similarly, whenever an entry is
+removed from redis the associated connection with dmproc is closed.
 
 The load on a redis server is very low, but it is extremely important
 to make sure it is always available. If the redis service become
-unavailable, the xmpp service will get unavailable.
+unavailable, so does the leela-xmpp.

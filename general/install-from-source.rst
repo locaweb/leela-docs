@@ -24,8 +24,8 @@ Now, download the latest release from github and build it:
 .. code-block:: sh
 
   $ wget -Oleela-v2x.tar.gz https://github.com/locaweb/leela/archive/v2.x.tar.gz
-  $ tar -xf leelav2x.tar.gz
-  $ cd leela-v2.x
+  $ tar -xf leela-v2x.tar.gz
+  $ cd leela-2.x
   $ make bootstrap
   $ make dist-build
 
