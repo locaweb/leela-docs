@@ -13,11 +13,11 @@ protocols.
 
 For data collection, currently you can use `collectd
 <http://collectd.org>`_ or a :doc:`fairly simple text protocol over
-UDP <users/collectd>`. This gives you a decent coverage of standard
+UDP <users/udp>`. This gives you a decent coverage of standard
 systems and applications at the same making it very easy to collect
 custom metrics.
 
-Data retrieval can be done using a :doc:`restful API <users/http>`
+Data retrieval can be done using a :doc:`restful API <users/rest-api>`
 which makes it easier to create dashboards, analyze historical data or
 simply plot graphs in the browser.
 

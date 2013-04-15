@@ -6,8 +6,8 @@ This is the stream processor engine, which is a fancy name to a
 component that is able to apply functions over a set of events.
 
 It is important to notice that you do not interact with this directly.
-Rather it is used by other components, like ``xmpp`` or ``http``, to
-fulfill a user request.
+Rather it is used by other components, like ``xmpp``, to fulfill a
+user request.
 
 Nevertheless, as the functions available here are usually used *as-is*
 by users through these *higher level* components, the first part of
@@ -88,8 +88,15 @@ sma :n
 ------
 
 Computes the `simple moving average
-<http://en.wikipedia.org/w/index.php?title=Moving_average&oldid=516268388#Simple_moving_average>`_
-of ``n`` items.
+<http://en.wikipedia.org/w/index.php?title=Moving_average&oldid=516268388#Simple_moving_average>`_. The
+actual implementation makes use of ``ewma`` using ``1-2/(n+1)`` as the ``alpha`` parameter.
+
+ewma :alpha
+-----------
+
+Computes the `exponential weighted moving average
+<http://en.wikipedia.org/w/index.php?title=Moving_average&oldid=545251643#Exponential_moving_average>`_
+using :alpha as the *alpha* parameter.
 
 **Arguments:**
 

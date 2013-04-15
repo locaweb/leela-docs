@@ -1,12 +1,13 @@
-================
- HTTP Interface
-================
+==========
+ REST API
+==========
 
 This exposes data via a *REST* interface. The following should apply
 to all resources:
 
 * All resources support the *JSON-P* protocol by appending the
-  ``callback`` parameter to the URL::
+  ``callback`` parameter to the URL:
+::
 
   /v1/foobar?callback=my_handler
 
