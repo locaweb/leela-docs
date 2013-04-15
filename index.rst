@@ -97,3 +97,4 @@ Contributors
    :glob:
 
    general/*
+   users/*

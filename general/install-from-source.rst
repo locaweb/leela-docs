@@ -2,6 +2,8 @@
  Installing the Linux Tarball
 ==============================
 
+This method uses virtualenv to install leela.
+
 Requirements
 ============
 

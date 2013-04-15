@@ -37,8 +37,11 @@ def test_md5():
       return(False)
 
     o_digest = state.get(filename, [None])[0]
-    with file(filename, "r") as fh:
-      n_digest = hashlib.md5(fh.read()).digest()
+    try:
+      with file(filename, "r") as fh:
+        n_digest = hashlib.md5(fh.read()).digest()
+    except IOError:
+      return(False)
 
     state[filename] = [n_digest, now]
     return(o_digest != n_digest)
