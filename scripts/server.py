@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys; _stdout = sys.stdout; _stderr = sys.stderr;
+import re
 import time
 import bottle
 import os.path
@@ -51,14 +52,15 @@ def system(*args):
   rc = subprocess.Popen(args, stdout=devnull, stderr=devnull).wait()
   _stdout.write("> %s: %s\n" % (" ".join(args), {0: "success"}.get(rc, "failure")))
 
-@bottle.route("/")
-def main():
-  return(bottle.redirect("/index.html"))
-
-@bottle.route("/<path:path>")
+@bottle.route("<path:path>")
 def doc(path):
-  rootdir = os.path.join(srcroot, "build", "html")
-  return(bottle.static_file(path, root=rootdir))
+  rootdir  = os.path.abspath(os.path.join(srcroot, "build", "html"))
+  response = bottle.static_file(path, root=rootdir)
+  if (response.status_code != 200):
+    for index in ("index.html", "index.htm"):
+      if (os.path.exists(os.path.join(rootdir + path, index))):
+        return(bottle.redirect(os.path.join(path, index)))
+  return(response)
 
 t = threading.Thread(target=monitor, args=(test_md5(), lambda: system("make", "SPHINXBUILD=" + sphinxbuild, "clean", "html")))
 t.setDaemon(True)
