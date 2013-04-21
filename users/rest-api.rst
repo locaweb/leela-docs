@@ -2,230 +2,208 @@
  REST API
 ==========
 
-This exposes data via a *REST* interface. The following should apply
+This exposes datas via a *REST* interface. The following should apply
 to all resources:
 
 * All resources support the *JSON-P* protocol by appending the
-  ``callback`` parameter to the URL:
-::
+  ``callback`` parameter to the URL: ::
 
   /v1/foobar?callback=my_handler
 
-* Currently only JSON format is supported;
-
-* Brackets means that component is optional. For instance
-  ``/v1/[data/]foobar`` represents two distinct resources:
-
-  a. ``/v1/foobar``
-
-  b. ``/v1/data/foobar``
-
-* You may add ``debug=true`` to enable debug information, as follows
-  (defaults to ``false``)::
+* You may add ``debug=true`` to enable debugging information. This can
+  give you a hint of what went wrong: ::
 
   /v1/foobar?debug=true
 
-Resources
-=========
-
-/v1/[data/]:year/:month/:key
-----------------------------
-
-Method: ``GET``
-~~~~~~~~~~~~~~~
-
-Retrieves data from the given month.
-
-:key: the event to load [e.g. localhost.cpu.idle];
-:year: the year [4 digits];
-:month: the month [numeric, starts with 1];
-
-Query String
-++++++++++++
-
-:nan: Defines what to do with the NaN/Infinity. Possible values are:
-      
-      * purge: removes all nan/inf out form the response;
-      * allow: keeps nan values in the response;
-
-/v1/[data/]:year/:month/:day/:key
----------------------------------
-
-Method: ``GET``
-~~~~~~~~~~~~~~~
-
-Retrieves data from the given day.
-
-:key: the event to load [e.g. localhost.cpu.idle];
-:year: the year [4 digits];
-:month: the month [numeric, starts with 1];
-:day: the day of month [numeric, starts with 1];
-
-Query String
-++++++++++++
-
-:nan: Defines what to do with the NaN/Infinity. Possible values are:
-      
-      * purge: removes all nan/inf out form the response;
-      * allow: keeps nan values in the response;
-
-/v1/[data/]past24/:key
-----------------------
-
-Method: ``GET``
-~~~~~~~~~~~~~~~
-
-Retrieves data from the past 24 hours.
-
-:key: the event to load [e.g. localhost.cpu.idle];
-
-Query String
-++++++++++++
-
-:nan: Defines what to do with the NaN/Infinity. Possible values are:
-      
-      * purge: removes all nan/inf out form the response;
-      * allow: keeps nan values in the response;
-
-/v1/[data/]pastweek/:key
-------------------------
-
-Method: ``GET``
-~~~~~~~~~~~~~~~
-
-Retrieves data from the past week (7 days).
-
-:key: the event to load [e.g. localhost.cpu.idle];
-
-Query String
-++++++++++++
-
-:nan: Defines what to do with the NaN/Infinity. Possible values are:
-      
-      * purge: removes all nan/inf out form the response;
-      * allow: keeps nan values in the response;
-
-/v1/[data/]range/:key
----------------------
-
-**DEPRECATED: USE ``/v1/[data/]:key`` instead!!!**
-
-/v1/[data/]:key
----------------
-
-Method: ``GET``
-~~~~~~~~~~~~~~~
-
-Retrieves data within a given time range.
-
-:key: The event to load [e.g. localhost.cpu.cpu.idle];
-
-Query String
-++++++++++++
-
-:start: The start date, UTC. Make sure ``start <= finish``;
-:finish: The finish date, UTC. Make sure the ``finish >= start``;
-:nan: Defines what to do with the NaN/Infinity. Possible values are:
-      
-      * purge: removes all nan/inf out form the response;
-      * allow: keeps nan values in the response;
-
-Use the following *strftime* time format::
-
-  %Y%m%dT%H%M
-
-Example::
-
-  $ curl {endpoint}/v1/range/foobar?start=20120101T1430&finish=20120101T1500
-  { "status": 200,
-    "results": ...
-  }
-
-.. _http put v1/data/key:
-
-Method: ``PUT``
-~~~~~~~~~~~~~~~
-
-Inserts a new data value under this key. The body of the request must
-be a valid json, and the json must have at least the following keys:
-
-:name: The name to store this object. This must match with the name
-       given in the URL;
-:timestamp: Unix timestamp (number of seconds since epoch);
-:value: The value to store under this key/timestamp;
-
-Example::
-
-  $ curl -X PUT -d '{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}' {endpoint}/v1/data/foobar
-  { "status": 201,
-    "results": {"name": "foobar", "timestamp": 1352483918, "value": :VALUE}
-  }
-
-Notes:
-
-* Only defined for ``data/`` resource.
-
-Response Codes
-==============
+Common Response Codes
+=====================
 
 :2xx: Ok;
-
-:200: Success;
-
-:201: Created;
-
 :4xx: Client error;
-
-:404: The requested data could not be found (invalid range, missing
-      event etc.);
-
-:400: You did something wrong;
-
 :5xx: Server error;
-
+:200: Success;
+:201: Created;
+:404: The requested data could not be found [invalid range, missing
+      event etc.];
+:400: You did something wrong;
 :500: Internal server error;
 
-:503: Maintanance;
+Error Responses
+===============
 
-Payload failure case
---------------------
+They will always come using the following format:
 
 ::
 
   {"status": int, "reason": string}
 
-:status: the http response code (e.g. 200, 400);
-:reason: a very short description of what went wrong;
+:status: the http response code [e.g. 404, 500];
+:reason: a very short description of what went wrong [might not be that useful though, use ``debug=true`` for more context];
 
-Example:
+Resources
+=========
 
-::
+/v1/data/:year/:month/:key
+--------------------------
+/v1/:year/:month/:key
+---------------------
 
-  {"status": 404, "reason": "no event found"}
+Method: ``GET``
+~~~~~~~~~~~~~~~
 
+Retrieves all events/data withing a given month.
 
-Payload success case
+:status: * 200 ok
+         * 404 not found
+         * xxx error
+
+:query string: * nan=purge: Removes all `nan/infinty` from the response;
+               * nan=allow: The default, allow `nan/infinity` values to appear on the response;
+
+/v1/data/:year/:month/:day/:key
+-------------------------------
+
+/v1/:year/:month/:day/:key
+--------------------------
+
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
+Retrieves all events/data withing a given day.
+
+:status: * 200 ok
+         * 404 not found
+         * xxx error
+
+:query string: * nan=purge: Removes all `nan/infinty` from the response;
+               * nan=allow: The default, allow `nan/infinity` values to appear on the response;
+
+/v1/data/past24/:key
 --------------------
 
-::
+/v1/past24/:key
+---------------
 
-  { "results": { KEY: { "series": TIMESERIES
-                      }
-               },
-    "status": 200
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
+Retrieves data/events from the past 24 hours.
+
+:status: * 200 ok
+         * 404 not found
+         * xxx error
+
+:query string: * nan=purge: Removes all `nan/infinty` from the response;
+               * nan=allow: The default, allow `nan/infinity` values to appear on the response;
+
+/v1/data/pastweek/:key
+----------------------
+
+/v1/pastweek/:key
+-----------------
+
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
+Retrieves data/events from the past week.
+
+:status: * 200 ok
+         * 404 not found
+         * xxx error
+
+:query string: * nan=purge: Removes all `nan/infinty` from the response;
+               * nan=allow: The default, allow `nan/infinity` values to appear on the response;
+
+/v1/data/:key
+-------------
+
+/v1/:key
+--------
+
+Method: ``GET``
+~~~~~~~~~~~~~~~
+
+Retrieves data/events within a given time range.
+
+:status: * 200 ok
+         * 404 not found
+         * xxx error
+
+:query string: * nan=purge: Removes all `nan/infinty` from the response;
+               * nan=allow: The default, allow `nan/infinity` values to appear on the response;
+               * start=TIMESPEC: The start time [UTC]. Make sure ``finish >= start``;
+               * finish=TIMESPEC: The finish data [UTC];
+
+TIMESPEC uses the the following *strftime* format: ::
+
+  %Y%m%dT%H%M
+
+Example::
+
+  $ curl {endpoint}/v1/foobar?start=20120101T1430&finish=20120101T1500
+  { "status": 200,
+    "results": ...
   }
 
-:KEY: the event requested;
-:TIMESERIES: A list with a 2-tuple ``[timestamp, value]``;
+/v1/:key
+--------
 
-Example:
+Method: ``POST``
+~~~~~~~~~~~~~~~~
 
-::
+Inserts a new metric under this key. The body of the request must be a
+valid json and the json must have the following keys:
 
-  { "results": { "localhost.cpu.idle": { series: [ [0,  0],
-                                                   [60, 12.5]
-                                                 ]
-                                       }
-               },
-    "status": 200
+:status: * 201 ok
+         * 400 bad/missing required values;
+         * xxx error
+
+:parameters: * type: One of ``gauge``, ``counter``, ``derive``, ``absolute``
+             * name: [optional] The name to store this metric. If this is provided, it must match the one given on the path;
+             * value: The value to store under this key/timestamp;
+             * timestamp: [optional] Unix timestamp [number of seconds since epoch];
+
+You may also provide a list of metrics as long as theirs names match
+the on given on the URL.
+
+Examples: ::
+
+  $ curl -X POST -d '{"type": "gauge", "value": 0.2}' {endpoint}/v1/foobar
+  {"status": 201,
+   "results": [{"name": "foobar", "timestamp": 1366549812, "type": "gauge", "value": 0.2}]
+  }
+
+.. _http put v1/data/key:
+
+/v1/data/:key
+-------------
+
+Method: ``PUT``
+~~~~~~~~~~~~~~~
+
+*Deprecated: use /POST/*
+
+Method: ``POST``
+~~~~~~~~~~~~~~~~
+
+Inserts a new data value under this key. The body of the request must
+be a valid json, and the json must have the following keys:
+
+:status: * 201 Ok
+         * xxx error
+
+:parameters: * name: [optional] The name to store this object. This must match the name given on the URL;
+             * value: The value to store under this key/timestamp;
+             * timestamp: [optional] Unix timestamp [number of seconds since epoch];
+
+You may use this resource to store up to 8k bytes worth of data [in
+the ``value`` field]. You may also provide a list of values [as long
+as theirs names match the one given on the URL] in which case each
+item of the list is subject to this limit.
+
+Example: ::
+
+  $ curl -X POST -d '{"value": :VALUE, "timestamp": 1352483918}' {endpoint}/v1/data/foobar
+  { "status": 201,
+    "results": [{"name": "foobar", "timestamp": 1352483918, "value": :VALUE}]
   }
