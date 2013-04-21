@@ -30,7 +30,7 @@ General
 
 * :doc:`Leela Architecture <general/architecture>`
 * :doc:`Installing from Source <general/install-from-source>`
-* :doc:`Installing the Debian Package <general/install-debian>`
+* :doc:`Installing the Debian Package <general/install-from-deb>`
 * :doc:`Roadmap <general/roadmap>`
 
 Administrators
@@ -96,5 +96,7 @@ Contributors
    :hidden:
    :glob:
 
+   general/index
    general/*
+   users/index
    users/*
