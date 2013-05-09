@@ -104,7 +104,7 @@ html_theme_options = {
     'github_user': 'locaweb',
     'github_repo': 'leela',
     'home_url': '//leela.rtfd.org',
-    'bootstrap_theme': '//bootswatch.com/cosmo/bootstrap.min.css'
+    'bootstrap_theme': '_static/bootstrap-cosmo.min.css'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
