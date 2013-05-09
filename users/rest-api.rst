@@ -55,6 +55,7 @@ Retrieves all events/data withing a given month.
 
 :status: * 200 ok
          * 404 not found
+         * 400 invalid range
          * xxx error
 
 :query string: * nan=purge: Removes all `nan/infinty` from the response;
@@ -127,6 +128,7 @@ Retrieves data/events within a given time range.
 
 :status: * 200 ok
          * 404 not found
+         * 400 invalid range
          * xxx error
 
 :query string: * nan=purge: Removes all `nan/infinty` from the response;
@@ -155,7 +157,7 @@ Inserts a new metric under this key. The body of the request must be a
 valid json and the json must have the following keys:
 
 :status: * 201 ok
-         * 400 bad/missing required values;
+         * 400 bad/missing required values
          * xxx error
 
 :parameters: * type: One of ``gauge``, ``counter``, ``derive``, ``absolute``
@@ -189,7 +191,8 @@ Method: ``POST``
 Inserts a new data value under this key. The body of the request must
 be a valid json, and the json must have the following keys:
 
-:status: * 201 Ok
+:status: * 201 ok
+         * 400 bad/missing required values
          * xxx error
 
 :parameters: * name: [optional] The name to store this object. This must match the name given on the URL;

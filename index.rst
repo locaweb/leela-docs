@@ -96,7 +96,6 @@ Contributors
    :hidden:
    :glob:
 
-   general/index
    general/*
    users/index
    users/*
