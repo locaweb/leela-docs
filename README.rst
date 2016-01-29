@@ -1,5 +1,3 @@
-.. image:: http://locastyle.locaweb.com.br/img/logoLocaweb.png
-
 =====
 LEELA
 =====
