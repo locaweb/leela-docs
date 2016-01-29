@@ -6,7 +6,7 @@ This project is the documentation for the first version of
 [Read the Docs](http://leela.rtfd.org/).
 
 Contributing
-============
+------------
 
 The following will install sphinx using virtualenv and start the
 server:
