@@ -2,17 +2,9 @@
 LEELA
 =====
 
-Distributed, real time event processor and monitoring engine.
-
-Documentation
-=============
-
-* http://leela.rtfd.org/
-
-Leela project
-=============
-
-  * https://github.com/locaweb/leela
+This project is the documentation for the first version of
+[Leela project](https://github.com/locaweb/leela), and it is published on
+[Read the Docs](http://leela.rtfd.org/).
 
 Contributing
 ============
